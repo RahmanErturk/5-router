@@ -1,0 +1,29 @@
+{
+  "name": "backend-photo-app",
+  "version": "0.1.0",
+  "description": "Delivers Photo as API",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon main.js",
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RahmanErturk/5-router.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RahmanErturk/5-router/issues"
+  },
+  "homepage": "https://github.com/RahmanErturk/5-router#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "lowdb": "^5.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
