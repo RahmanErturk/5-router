@@ -1,8 +1,5 @@
 import express from "express";
 
-import { Low } from "lowdb";
-import { JSONFile } from "lowdb/node";
-
 import albumRouter from "./router/albumRouter.js";
 import photoRouter from "./router/photoRouter.js";
 
