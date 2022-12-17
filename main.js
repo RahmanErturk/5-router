@@ -9,7 +9,7 @@ import photoRouter from "./router/photoRouter.js";
 // const db = new Low(new JSONFile("db/data.json"));
 
 const server = express();
-const port = 4000;
+const port = 4001;
 
 server.use(express.json());
 server.use(cors({ origin: "*" }));

@@ -3,12 +3,57 @@ import { JSONFile } from "lowdb/node";
 
 const db = new Low(new JSONFile("db/data.json"));
 
-export const getAllPhotos = (req, res) => {};
+// await db.read();
 
-export const getPhoto = (req, res) => {};
+export const getAllPhotos = async (req, res) => {
+  await db.read();
 
-export const editPhoto = (req, res) => {};
+  res.json(db.data.photos);
+};
 
-export const deletePhoto = (req, res) => {};
+export const getPhoto = async (req, res) => {
+  await db.read();
+  const photo = db.data.photos.find((p) => p.id === +req.params.id);
 
-export const savePhoto = (req, res) => {};
+  if (!photo) return res.status(404).send("Not Found");
+
+  res.json(photo);
+};
+
+export const editPhoto = async (req, res) => {
+  await db.read();
+
+  const index = db.data.photos.findIndex((p) => p.id === +req.params.id);
+
+  if (index < 0) return res.status(404).send("Not Found");
+
+  db.data.photos[index] = { ...db.data.photos[index], ...req.body };
+  await db.write();
+  res.json("updated");
+};
+
+export const deletePhoto = async (req, res) => {
+  await db.read();
+
+  const index = db.data.photos.findIndex((p) => p.id === +req.params.id);
+
+  if (index < 0) return res.status(404).send("Not Found");
+
+  db.data.photos.splice(index, 1);
+
+  db.write();
+
+  res.status(202).send(`${req.params.id} deleted`);
+};
+
+export const savePhoto = async (req, res) => {
+  await db.read();
+
+  const nextID = Math.max(...db.data.photos.map((p) => p.id)) + 1;
+
+  db.data.photos.push({ ...req.body, id: nextID });
+
+  db.write();
+
+  res.send(`Album ${nextID} created successfully`);
+};
