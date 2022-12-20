@@ -29,7 +29,7 @@ export const editAlbum = async (req, res) => {
 
   db.data.albums[index] = { ...db.data.albums[index], ...req.body };
   await db.write();
-  res.json("updated");
+  res.status(202).json("updated");
 };
 
 export const deleteAlbum = async (req, res) => {
