@@ -55,5 +55,5 @@ export const saveAlbum = async (req, res) => {
 
   db.write();
 
-  res.send(`Album ${nextID} created successfully`);
+  res.json(`Album ${nextID} created successfully`);
 };

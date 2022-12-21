@@ -29,7 +29,7 @@ export const editPhoto = async (req, res) => {
 
   db.data.photos[index] = { ...db.data.photos[index], ...req.body };
   await db.write();
-  res.json("updated");
+  res.status(202).json("updated");
 };
 
 export const deletePhoto = async (req, res) => {
