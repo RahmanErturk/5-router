@@ -43,7 +43,7 @@ export const deleteAlbum = async (req, res) => {
 
   db.write();
 
-  res.send(`${req.params.id} deleted`);
+  res.status(202).send(`${req.params.id} deleted`);
 };
 
 export const saveAlbum = async (req, res) => {
